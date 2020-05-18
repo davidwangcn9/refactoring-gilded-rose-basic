@@ -1,5 +1,10 @@
 package cn.xpbootcamp.gilded_rose;
 
+import cn.xpbootcamp.gilded_rose.product.AgedBrieItem;
+import cn.xpbootcamp.gilded_rose.product.BackstagePassItem;
+import cn.xpbootcamp.gilded_rose.product.Item;
+import cn.xpbootcamp.gilded_rose.product.NormalItem;
+import cn.xpbootcamp.gilded_rose.product.SulfurasItem;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -67,7 +72,16 @@ class GildedRoseTest {
     }
 
     private static Item createItem(String name, int sellIn, int quality) {
-        return new Item(name, sellIn, quality);
+        switch (name) {
+            case "Aged Brie":
+                return new AgedBrieItem(sellIn, quality);
+            case "Sulfuras, Hand of Ragnaros":
+                return new SulfurasItem(sellIn, quality);
+            case "Backstage passes to a TAFKAL80ETC concert":
+                return new BackstagePassItem(sellIn, quality);
+            default:
+                return new NormalItem(name, sellIn, quality);
+        }
     }
 
     private static class TestFixture {

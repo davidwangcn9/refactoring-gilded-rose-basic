@@ -1,6 +1,6 @@
-package cn.xpbootcamp.gilded_rose;
+package cn.xpbootcamp.gilded_rose.product;
 
-public class Item {
+public abstract class Item {
 
     private final String name;
     private int sellIn;
@@ -31,6 +31,8 @@ public class Item {
         this.sellIn = sellIn;
         this.quality = quality;
     }
+
+    public abstract void update();
 
     @Override
     public String toString() {
