@@ -6,24 +6,36 @@ public abstract class Item {
     private int sellIn;
     private int quality;
 
-    public String getName() {
-        return name;
-    }
-
-    public int getSellIn() {
+    protected int getSellIn() {
         return sellIn;
     }
 
-    public int getQuality() {
-        return quality;
+    protected boolean withinMaxQuality() {
+        return quality < 50;
     }
 
-    public void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
+    protected boolean withinMinQuality() {
+        return quality > 0;
     }
 
-    public void setQuality(int quality) {
-        this.quality = quality;
+    protected boolean passSellInDay() {
+        return getSellIn() < 0;
+    }
+
+    protected void increaseQuality() {
+        quality = quality + 1;
+    }
+
+    protected void decreaseQuality() {
+        quality = quality - 1;
+    }
+
+    protected void decreaseSellIn() {
+        sellIn = sellIn - 1;
+    }
+
+    protected void resetQuality() {
+        quality = 0;
     }
 
     public Item(String name, int sellIn, int quality) {
